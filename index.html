@@ -62,41 +62,35 @@ export default function BookStore() {
 }
 
 export function BuyEbook() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
-  const handleOrder = () => {
-    if (name && email) {
-      setMessage("Спасибо! Мы отправим вам инструкции по оплате.");
-      setName("");
-      setEmail("");
-    }
-  };
-
   return (
     <div className="min-h-screen flex flex-col items-center p-6">
       <h1 className="text-3xl font-bold mb-6">Купить электронную версию</h1>
       <Card className="max-w-md w-full text-center">
         <CardContent>
           <p className="text-lg">Электронная версия книги доступна для покупки.</p>
-          <p className="text-sm mt-2">Заполните форму, и мы отправим вам реквизиты для оплаты.</p>
-          <div className="space-y-3 mt-4">
-            <Input
-              type="text"
-              placeholder="Ваше имя"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <Input
-              type="email"
-              placeholder="Ваш email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Button onClick={handleOrder}>Отправить запрос</Button>
-          </div>
-          {message && <p className="mt-2 text-green-600">{message}</p>}
+          <Button asChild>
+            <a href="https://your-payment-provider.com/ebook-pay" target="_blank" rel="noopener noreferrer">
+              Оплатить и скачать
+            </a>
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+export function BuyAudio() {
+  return (
+    <div className="min-h-screen flex flex-col items-center p-6">
+      <h1 className="text-3xl font-bold mb-6">Купить аудиоверсию</h1>
+      <Card className="max-w-md w-full text-center">
+        <CardContent>
+          <p className="text-lg">Аудиоверсия книги доступна для покупки.</p>
+          <Button asChild>
+            <a href="https://your-payment-provider.com/audio-pay" target="_blank" rel="noopener noreferrer">
+              Оплатить и скачать
+            </a>
+          </Button>
         </CardContent>
       </Card>
     </div>
